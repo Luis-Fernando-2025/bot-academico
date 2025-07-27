@@ -1,0 +1,95 @@
+
+# CHATBOT_ACADEMICO
+
+## Descripción
+CHATBOT_ACADEMICO es una herramienta diseñada para ayudar a estudiantes universitarios a organizarse y prepararse para sus exámenes. 
+Envía recordatorios automáticos a través de WhatsApp con frases motivadoras y mensajes programados en fechas clave, 
+para que los estudiantes no dejen el estudio para el último momento.
+
+El objetivo es brindar un soporte real a la organización académica, promoviendo hábitos de estudio anticipados 
+en lugar de recordatorios de última hora que generan más estrés.
+
+---
+
+## Características principales
+- Registro de usuarios con número de WhatsApp y zona horaria.
+- Registro de cursos y fechas de exámenes.
+- Programación de recordatorios en intervalos personalizados (con mínimo de 5 días antes del examen).
+- Sistema de envío automático vía Twilio.
+- Simulación de envíos para pruebas (`--sim`).
+- Validación automática para evitar errores de zona horaria o duplicados.
+- Mantenimiento de la base de datos (eliminación y fusión de usuarios duplicados, corrección de avisos).
+
+---
+
+## Archivos clave
+- **add_user.py**  
+  Permite registrar nuevos usuarios y exámenes asociados.
+
+- **ver_usuarios.py**  
+  Lista todos los usuarios y sus exámenes registrados.
+
+- **scheduler.py**  
+  Programa y envía mensajes de recordatorio (permite simulación o envío real).
+
+- **fix_timezone.py / fix_numbers.py / fix_avisos.py**  
+  Utilidades para corregir datos de zona horaria, números y avisos inválidos.
+
+- **merge_users.py**  
+  Combina usuarios duplicados con el mismo número de teléfono.
+
+---
+
+## Instalación
+1. Clonar el repositorio o copiar los archivos del proyecto.
+2. Crear un entorno virtual en Python 3.12+.
+3. Instalar dependencias:
+   ```
+   pip install -r requirements.txt
+   ```
+4. Configurar variables de entorno para Twilio en el archivo `.env`:
+   ```
+   TWILIO_ACCOUNT_SID=xxxxxxxx
+   TWILIO_AUTH_TOKEN=xxxxxxxx
+   TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
+   ```
+
+---
+
+## Uso básico
+1. **Registrar usuario y exámenes:**
+   ```
+   python add_user.py
+   ```
+
+2. **Ver todos los usuarios:**
+   ```
+   python ver_usuarios.py
+   ```
+
+3. **Probar el envío de recordatorios simulados (sin enviar):**
+   ```
+   python scheduler.py --sim YYYY-MM-DD
+   ```
+
+4. **Ejecutar envío real:**
+   ```
+   python scheduler.py --sim YYYY-MM-DD --send
+   ```
+
+---
+
+## Filosofía
+Este proyecto busca que los recordatorios realmente ayuden al estudiante a planificar con tiempo. 
+Por eso, no se permiten recordatorios de menos de 5 días antes del examen.
+
+---
+
+## Próximos pasos
+- Desarrollo de una interfaz web para que los alumnos se registren fácilmente.
+- Implementación de una app móvil (iOS/Android) para centralizar los recordatorios.
+- Sistema de estadísticas y seguimiento de hábitos de estudio.
+
+---
+
+© 2025 Proyecto CHATBOT_ACADEMICO

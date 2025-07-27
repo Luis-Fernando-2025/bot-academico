@@ -1,0 +1,170 @@
+[
+  {
+    "nombre": "Luis Fernando",
+    "telefono": "whatsapp:+51972552408",
+    "usar_globales": true,
+    "avisos_globales": [
+      30,
+      20,
+      10,
+      5
+    ],
+    "examenes": [
+      {
+        "curso": "Matemáticas",
+        "fecha": "2025-07-27",
+        "avisos": []
+      },
+      {
+        "curso": "Historia Universal II",
+        "fecha": "2025-08-05",
+        "avisos": []
+      },
+      {
+        "curso": "Química II",
+        "fecha": "2025-08-10",
+        "avisos": [
+          30,
+          20,
+          10,
+          5
+        ]
+      },
+      {
+        "curso": "Matemática",
+        "fecha": "2025-09-01",
+        "avisos": [
+          30,
+          10,
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "María López",
+    "telefono": "whatsapp:+51972552408",
+    "usar_globales": false,
+    "avisos_globales": [],
+    "examenes": [
+      {
+        "curso": "Biología",
+        "fecha": "2025-07-29",
+        "avisos": [
+          20,
+          10,
+          5
+        ]
+      },
+      {
+        "curso": "Química",
+        "fecha": "2025-08-01",
+        "avisos": [
+          25,
+          15,
+          5
+        ]
+      },
+      {
+        "curso": "Anatomía",
+        "fecha": "2025-08-06",
+        "avisos": [
+          30,
+          10,
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Carlos Ramírez",
+    "telefono": "whatsapp:+51972550001",
+    "usar_globales": true,
+    "avisos_globales": [
+      25,
+      15,
+      10,
+      5
+    ],
+    "examenes": [
+      {
+        "curso": "Geografía",
+        "fecha": "2025-07-28",
+        "avisos": []
+      },
+      {
+        "curso": "Inglés",
+        "fecha": "2025-07-31",
+        "avisos": []
+      },
+      {
+        "curso": "Arte",
+        "fecha": "2025-08-04",
+        "avisos": []
+      }
+    ]
+  },
+  {
+    "nombre": "Ana Torres",
+    "telefono": "whatsapp:+51972550002",
+    "usar_globales": false,
+    "avisos_globales": [],
+    "examenes": [
+      {
+        "curso": "Matemáticas",
+        "fecha": "2025-07-26",
+        "avisos": [
+          20,
+          10,
+          5
+        ]
+      },
+      {
+        "curso": "Historia",
+        "fecha": "2025-07-29",
+        "avisos": [
+          15,
+          7,
+          5
+        ]
+      },
+      {
+        "curso": "Física",
+        "fecha": "2025-08-03",
+        "avisos": [
+          30,
+          20,
+          5
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "Pedro Sánchez",
+    "telefono": "whatsapp:+51972550003",
+    "usar_globales": true,
+    "avisos_globales": [
+      20,
+      15,
+      10,
+      5
+    ],
+    "examenes": [
+      {
+        "curso": "Literatura",
+        "fecha": "2025-07-27",
+        "avisos": []
+      },
+      {
+        "curso": "Ciencias",
+        "fecha": "2025-08-01",
+        "avisos": []
+      },
+      {
+        "curso": "Economía",
+        "fecha": "2025-08-05",
+        "avisos": []
+      }
+    ]
+  }
+]
