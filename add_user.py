@@ -83,18 +83,14 @@ def registrar_examen_interactivo(usuario):
 def registrar_usuario_db(session, telefono, timezone, examenes):
     """
     Inserta un usuario con sus exámenes en la base de datos.
-    - session: sesión SQLAlchemy.
-    - telefono: string (ejemplo: whatsapp:+51999999999).
-    - timezone: zona horaria (ejemplo: America/Lima).
-    - examenes: lista de diccionarios [{curso: "Matemáticas", fecha: "2025-08-10", avisos: "30,10,5"}].
+    Devuelve datos planos para evitar DetachedInstanceError.
     """
-    if not telefono.startswith("whatsapp:"):
-        telefono = "whatsapp:" + telefono
+    telefono_norm = telefono if telefono.startswith("whatsapp:") else "whatsapp:" + telefono
 
-    usuario = session.query(Usuario).filter_by(telefono=telefono).first()
+    usuario = session.query(Usuario).filter_by(telefono=telefono_norm).first()
 
     if not usuario:
-        usuario = Usuario(telefono=telefono, timezone=timezone)
+        usuario = Usuario(telefono=telefono_norm, timezone=timezone)
         session.add(usuario)
         session.flush()
 
@@ -107,7 +103,8 @@ def registrar_usuario_db(session, telefono, timezone, examenes):
         usuario.examenes.append(nuevo_examen)
 
     session.commit()
-    return usuario
+
+    return {"telefono": telefono_norm, "nuevos_examenes": len(examenes)}
 
 
 # --------------- CLI / Main -----------------
@@ -122,11 +119,9 @@ def main_cli():
     )
     args = parser.parse_args()
 
-    # Si NO se pasa --telefono, entramos al modo interactivo tradicional
     if not args.telefono:
         return main_interactivo()
 
-    # === Modo CLI ===
     try:
         tz = validar_timezone(args.timezone)
     except ValueError as e:
@@ -144,9 +139,9 @@ def main_cli():
         return
 
     session = SessionLocal()
-    usuario = registrar_usuario_db(session, args.telefono, tz, examenes)
+    result = registrar_usuario_db(session, args.telefono, tz, examenes)
     session.close()
-    print(f"✅ Usuario {usuario.telefono} actualizado/creado con {len(examenes)} examen(es).")
+    print(f"✅ Usuario {result['telefono']} actualizado/creado con {result['nuevos_examenes']} examen(es).")
 
 
 def main_interactivo():
